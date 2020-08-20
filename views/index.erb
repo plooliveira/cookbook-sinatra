@@ -1,0 +1,13 @@
+<h1> The coockbook app </h1>
+<ul>
+  <li><a href="/about">teste</a></li>
+</ul>
+<h3>Suas receitas salvas</h3>
+<ol>
+  <% @cookbook.each do |recipe| %>
+    <li>
+      <% status = recipe.done == true ? "X" : " " %>
+      <%= "[#{status}] #{recipe.name} (#{recipe.prep_time}) | Difficulty: #{recipe.difficulty}"%>
+    </li>
+  <% end %>
+</ol>

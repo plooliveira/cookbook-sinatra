@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "pry-byebug"
 require "better_errors"
+require_relative "repositories/cookbook"
 
 configure :development do
   use BetterErrors::Middleware
@@ -9,5 +10,11 @@ configure :development do
 end
 
 get '/' do
-  'Hello world!'
+  @cookbook = Cookbook.new('recipes.csv').all
+  erb :index
 end
+
+get '/about' do
+  erb :about
+end
+
